@@ -1,7 +1,7 @@
 <template>
   <article class="post">
       <header>
-          <button @click="goBack" v-if="!readMore">Go back</button>
+          <button @click="goBack" v-if="!readMore" class="btn">Go back</button>
       </header>
       <h1>{{ post.title }}</h1>
       <p>{{ post.body }}</p>
@@ -35,48 +35,56 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .post {
   width: 100%;
   background-color: #fff;
   border-radius: 8px;
+
+  header {
+    padding: 15px 20px 10px;
+  }
+
+  h1 {
+    margin: 9px 0 7px;
+    padding: 0 20px;
+    font-size: 22px;
+    line-height: 1.3em;
+  }
+
+  p {
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  footer {
+    padding: 0 20px 16px;
+    margin: 11px 0 0;
+    color: #595959;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__author {
+  font-size: 15px;
+  }
+  
+  &__btn-read {
+    border-color: cornflowerblue;
+    color: cornflowerblue;
+    box-shadow: none;
+  }
 }
+
 .post + .post {
   margin-top: 10px;
 }
-.post header {
-  padding: 10px;
-}
-.post h1 {
-  margin: 9px 0 7px;
-  padding: 0 20px;
-  font-size: 22px;
-  line-height: 1.3em;
-}
-.post p {
-  padding: 0 20px;
-  font-size: 16px;
-  line-height: 24px;
-}
-.post footer {
-  padding: 0 20px 16px;
-  margin: 11px 0 0;
-  color: #595959;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.post__author {
-  font-size: 15px;
-}
+
 .btn {
   font-size: 12px;
   border-radius: 8px;
   background: transparent;
-}
-.post__btn-read {
-  border-color: cornflowerblue;
-  color: cornflowerblue;
-  box-shadow: none;
 }
 </style>

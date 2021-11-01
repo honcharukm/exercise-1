@@ -1,11 +1,13 @@
 <template>
   <div>
-    <header>
+    <header class="filters">
+      Count Articles:
       <custom-select
         :options="[10, 20, 30]"
         :current-value="getLimit"
         :handle-change="changeLimit"
       />
+      Sort by: 
       <custom-select
         :options="['asc', 'desc']"
         :current-value="getSort"
@@ -18,7 +20,7 @@
       :post="post"
       :readMore="true"
     />
-    <paginate :pageCount="getPageCount" :clickHandler="changePage" />
+    <posts-paginate :pageCount="getPageCount" :changePage="changePage"/>
   </div>
 </template>
 
@@ -26,11 +28,11 @@
 import { mapGetters, mapActions } from "vuex";
 import PostCard from "../components/PostCard.vue";
 import CustomSelect from "../components/CustomSelect.vue";
-import Paginate from "vuejs-paginate";
+import PostsPaginate from '../components/PostsPaginate.vue'
 
 export default {
   name: "PostsPage",
-  components: { PostCard, CustomSelect, Paginate },
+  components: { PostCard, CustomSelect, PostsPaginate },
   computed: {
     ...mapGetters(["allPosts", "getLimit", "getSort", "getPageCount"]),
   },
@@ -60,5 +62,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 10px 0;
+  align-items: center;
+}
 </style>
